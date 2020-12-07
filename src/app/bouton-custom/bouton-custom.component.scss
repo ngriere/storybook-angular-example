@@ -1,0 +1,127 @@
+$bouton-custom-primaire-active-background-color: #ffe166;
+$bouton-custom-primaire-disabled-background-color: #ffd733;
+
+$bouton-custom-secondaire-border: solid 1px #071a39;
+$bouton-custom-secondaire-focus-border: solid 1px #395179;
+$bouton-custom-secondaire-disabled-border: solid 1px #0d2f66;
+$bouton-custom-secondaire-active-color: #071a39;
+
+$bouton-custom-height: 40px;
+$bouton-custom-padding: 8px 24px;
+$bouton-custom-border-radius: $bouton-custom-height / 2;
+$halo-animation-speed: 0.8s;
+
+.bouton-custom {
+  position: relative;
+  height: $bouton-custom-height;
+  padding: $bouton-custom-padding;
+  border-radius: $bouton-custom-border-radius;
+  text-align: center;
+  text-transform: lowercase;
+  cursor: pointer;
+
+  &--petit {
+    font-size: 12px;
+    $bouton-custom-padding: 10px 16px;
+  }
+
+  &--moyen {
+    font-size: 14px;
+    $bouton-custom-padding: 11px 20px;
+  }
+
+  &--grand {
+    font-size: 16px;
+    $bouton-custom-padding: 12px 24px;
+  }
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
+
+  &:hover {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, font-weight 0.5s ease-in-out;
+  }
+
+  /* Effet Halo */
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    padding: $bouton-custom-height/2 50%;
+    width: $bouton-custom-height/2;
+    height: $bouton-custom-height/2;
+    background-color: white;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity $halo-animation-speed ease-in-out, transform $halo-animation-speed ease-in-out;
+  }
+
+  /* Effet Halo Active */
+  &:active:after {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s ease-in-out;
+  }
+
+  &:disabled:after {
+    opacity: 0;
+  }
+
+  &--primaire {
+    color: #071a39;
+    background-color: #ffcd00;
+    border: none;
+
+    &:hover {
+      background-color: $bouton-custom-primaire-active-background-color;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      background-color: $bouton-custom-primaire-active-background-color;
+    }
+
+    &:disabled {
+      background-color: #a6a6a6;
+      color: #565656;
+      cursor: not-allowed;
+    }
+  }
+
+  &--secondaire {
+    background-color: white;
+    border: $bouton-custom-secondaire-border;
+
+    &:hover {
+      background-color: #395179;
+      color: white;
+      border: $bouton-custom-secondaire-focus-border;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      background-color: #071a39;
+      color: white;
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:focus {
+      border: none;
+      background-color: #a6a6a6;
+      color: #565656;
+      cursor: not-allowed;
+    }
+  }
+
+
+}
